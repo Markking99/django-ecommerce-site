@@ -1,0 +1,41 @@
+
+<link rel="stylesheet" href="Okoa/static/style.css">
+<div class="topnav">
+  <a href="home.html">Home</a>
+  
+  <a href="news.html">Notice Board</a>
+  <a href="services.html">Services</a>
+  <a href="contact.html">Contact</a>
+  <a href="about.html">About</a>
+  <a href="https://kenyaseed.com/">Kenya Seed </a>
+  
+
+
+  {% if user.is_authenticated %}
+  <a href="/account">{{user.username}}</a>
+  <a href="/logout">Logout</a>
+  {% else %}
+  <a href="/login">Login</a>
+  <a href="/register">Register</a>
+  {% endif %}
+  
+
+  
+
+  <div class="search">
+    <form  class="d-flex" method=POST
+    action="{% url 'search' %}"
+    >
+    {% csrf_token %}
+      <input class="text"
+      type="search"
+      placeholder="Search" aria-label="search"
+      name="searched" >
+      <button class="btn
+      btn-outline-secondary" type="submit">Search</button>
+  
+     
+        
+     </form>
+  </div>
+</div>

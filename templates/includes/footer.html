@@ -1,0 +1,35 @@
+<html>
+
+
+{% block content %}
+  <h2>Sign up</h2>
+  <form method="post">
+    {% csrf_token %}
+    {% for field in form %}
+      <p>
+        {{ field.label_tag }}<br>
+        {{ field }}
+        {% if field.help_text %}
+          <small style="color: grey">{{ field.help_text }}</small>
+        {% endif %}
+        {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
+        {% endfor %}
+      </p>
+    {% endfor %}
+    <button type="submit">Sign up</button>
+  </form>
+{% endblock %}
+</html>
+
+<div class="search">
+  <form  class="d-flex" method=POST
+  action="{% url 'search' %}"
+  >
+  {% csrf_token %}
+    <input class="text"
+    type="search"
+    placeholder="Search" aria-label="search"
+    name="searched" >
+    <button class="btn
+    btn-outline-secondary" type="submit">Search</button>
